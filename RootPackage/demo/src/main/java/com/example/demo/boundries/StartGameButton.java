@@ -5,7 +5,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package RootPackage;
+package com.example.demo.boundries;
 
 import java.util.*;
 import java.time.*;

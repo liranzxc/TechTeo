@@ -5,7 +5,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package RootPackage;
+package com.example.demo.entities;
 
 import java.util.*;
 import java.time.*;
@@ -35,7 +35,7 @@ public class Board {
       for(int j =0; j<3;j++)
       {
         rubices[i,j] = new Rubic();
-        
+
       }
     }
   }

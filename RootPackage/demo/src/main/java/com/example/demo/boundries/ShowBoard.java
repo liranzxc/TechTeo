@@ -5,7 +5,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com. We would love to hear from you.
 */
-package RootPackage;
+package com.example.demo.boundries;
 
 import java.util.*;
 import java.time.*;
@@ -20,15 +20,13 @@ import java.time.*;
 public class ShowBoard {
   // ----------- << method.annotations@AAAAAAFqEXQmdBefqFE= >>
   // ----------- >>
-  public void SelectMove() {
-  // ----------- << method.body@AAAAAAFqEXQmdBefqFE= >>
-  // ----------- >>
-  }
   // ----------- << method.annotations@AAAAAAFqEZBDWhl6wRE= >>
   // ----------- >>
   public ShowBoard(Board board) {
   // ----------- << method.body@AAAAAAFqEZBDWhl6wRE= >>
   // ----------- >>
+
+      System.out.println(board.printBoard());
   }
 // ----------- << class.extras@AAAAAAFpV1uqFmgq5+0= >>
 // ----------- >>
