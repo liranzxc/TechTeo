@@ -17,7 +17,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAFqX944KOxXjoc= >>
 // ----------- >>
-public class Player2 {
+public class Player2 extends Players{
   // ----------- << method.annotations@AAAAAAFqX95et+y9LnY= >>
   // ----------- >>
   public void markO() {

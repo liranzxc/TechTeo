@@ -17,7 +17,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAFqEL+umRp+/yI= >>
 // ----------- >>
-public class Players {
+public class Player {
   // ----------- << attribute.annotations@AAAAAAFqEN3vMB6cSgU= >>
   // ----------- >>
   private int  wins;
@@ -25,13 +25,9 @@ public class Players {
   // ----------- << attribute.annotations@AAAAAAFqEOsueyfBRe4= >>
   // ----------- >>
   private enum mark;
-
-  // ----------- << attribute.annotations@AAAAAAFqEMMnqRukrik= >>
-  // ----------- >>
-  private Board board;
-
+  
   private int  getWins() {
-    return wins;
+    return this.wins;
   }
 
   private enum getMark() {

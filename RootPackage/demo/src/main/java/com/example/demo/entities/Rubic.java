@@ -50,10 +50,7 @@ public class Rubic {
     return board;
   }
 
-  public Board get() {
-    return ;
-  }
-
+ 
   public Board getBoard() {
     return board;
   }
@@ -70,10 +67,7 @@ public class Rubic {
     this.board = board;
   }
 
-  public void set(Board ) {
-    this. = ;
-  }
-
+ 
   public void setBoard(Board board) {
     this.board = board;
   }
