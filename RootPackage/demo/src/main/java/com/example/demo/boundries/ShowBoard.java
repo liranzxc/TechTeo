@@ -26,7 +26,7 @@ public class ShowBoard {
   }
   // ----------- << method.annotations@AAAAAAFqEZBDWhl6wRE= >>
   // ----------- >>
-  public ShowBoard() {
+  public ShowBoard(Board board) {
   // ----------- << method.body@AAAAAAFqEZBDWhl6wRE= >>
   // ----------- >>
   }

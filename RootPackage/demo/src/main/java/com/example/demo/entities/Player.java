@@ -26,10 +26,10 @@ public class Player {
   // ----------- >>
   private enum mark;
   
-  private int  getWins() {
+
+  private int getWins() {
     return this.wins;
   }
-
   private enum getMark() {
     return mark;
   }

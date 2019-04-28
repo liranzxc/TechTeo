@@ -20,33 +20,48 @@ import java.time.*;
 public class Board {
   // ----------- << attribute.annotations@AAAAAAFqEbOtPr4u4qs= >>
   // ----------- >>
-  private void status;
+  private Rubic rubices[3,3];
+  private boolean currectPlayer = true;
 
-  public void getStatus() {
-    return status;
+  public Board(){
+
+    init();
   }
 
-  public void setStatus(void status) {
-    this.status = status;
+  public init()
+  {
+    for(int i = 0 ; i<3;i++)
+    {
+      for(int j =0; j<3;j++)
+      {
+        rubices[i,j] = new Rubic();
+        
+      }
+    }
   }
 
-  // ----------- << method.annotations@AAAAAAFqEWxj9hczLcE= >>
-  // ----------- >>
-  public void getBoard() {
-  // ----------- << method.body@AAAAAAFqEWxj9hczLcE= >>
-  // ----------- >>
+  public GetRubices()
+  {
+    return this.rubices;
+  }
+  public GetCurrectPlayer()
+  {
+    return this.currectPlayer;
   }
   // ----------- << method.annotations@AAAAAAFqEXy+QBhCKio= >>
   // ----------- >>
-  public void registersMove() {
+  public void registersMove(int row,int col,enum mark) {
   // ----------- << method.body@AAAAAAFqEXy+QBhCKio= >>
   // ----------- >>
+
+      this.rubices[row,col].setMark(mark);
   }
   // ----------- << method.annotations@AAAAAAFqEYHjVxiQ3rk= >>
   // ----------- >>
   public void SwapPlayers() {
   // ----------- << method.body@AAAAAAFqEYHjVxiQ3rk= >>
   // ----------- >>
+      this.currectPlayer = !this.currectPlayer;
   }
 // ----------- << class.extras@AAAAAAFqEN9ZYRVzA5E= >>
 // ----------- >>

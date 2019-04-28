@@ -20,6 +20,10 @@ import java.time.*;
 public class PlayGameController {
   // ----------- << method.annotations@AAAAAAFqEXYlzBfXDrg= >>
   // ----------- >>
+
+  private Board board;
+  private Player1 player1,Player2 player2;
+  
   public void IsAvilableMove() {
   // ----------- << method.body@AAAAAAFqEXYlzBfXDrg= >>
   // ----------- >>

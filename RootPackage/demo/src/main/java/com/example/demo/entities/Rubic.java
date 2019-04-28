@@ -21,35 +21,21 @@ public class Rubic {
   // ----------- << attribute.annotations@AAAAAAFqEMiOCh2cTeM= >>
   // ----------- >>
   private enum mark;
-
-  // ----------- << attribute.annotations@AAAAAAFqEN6vjB8uvmI= >>
-  // ----------- >>
   private boolean empty;
-
-  // ----------- << attribute.annotations@AAAAAAFqEL62BRnYpyE= >>
-  // ----------- >>
-  private Board board;
-
-  // ----------- << attribute.annotations@AAAAAAFqWXWqIXIrOUc= >>
-  // ----------- >>
-  private Board ;
-
-  // ----------- << attribute.annotations@AAAAAAFqX9ydX+kdqvQ= >>
-  // ----------- >>
   private Board board;
 
   public enum getMark() {
     return mark;
   }
 
+  public Rubic(Board board)
+  {
+    this.board = board;
+  }
+
   public boolean isEmpty() {
     return empty;
   }
-
-  public Board getBoard() {
-    return board;
-  }
-
  
   public Board getBoard() {
     return board;
@@ -63,64 +49,10 @@ public class Rubic {
     this.empty = empty;
   }
 
-  public void setBoard(Board board) {
-    this.board = board;
-  }
-
  
   public void setBoard(Board board) {
     this.board = board;
   }
-
-  public void linkBoard(Board _board) {
-    if (_board != null) {
-      _board.getRubic().add(this);
-    }
-
-    unlinkBoard();
-    setBoard(_board);
-  }
-
-  public void link(Board _) {
-    if (_ != null) {
-      _.unlink();
-      _.set(this);
-    }
-
-    unlink();
-    set(_);
-  }
-
-  public void linkBoard(Board _board) {
-    if (_board != null) {
-      _board.getRubic().add(this);
-    }
-
-    unlinkBoard();
-    setBoard(_board);
-  }
-
-  public void unlinkBoard() {
-    if (getBoard() != null) {
-      getBoard().getRubic().remove(this);
-      setBoard(null);
-    }
-  }
-
-  public void unlink() {
-    if (get() != null) {
-      get().set(null);
-      set(null);
-    }
-  }
-
-  public void unlinkBoard() {
-    if (getBoard() != null) {
-      getBoard().getRubic().remove(this);
-      setBoard(null);
-    }
-  }
-
   // ----------- << method.annotations@AAAAAAFqEON2gSBBuu4= >>
   // ----------- >>
   public void setPlayerMark() {
