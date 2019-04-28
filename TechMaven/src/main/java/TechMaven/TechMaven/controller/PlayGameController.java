@@ -9,13 +9,13 @@ package TechMaven.TechMaven.controller;
 
 import java.util.*;
 
+import TechMaven.TechMaven.boundries.SelectMove;
+import TechMaven.TechMaven.boundries.StartGameButton;
 import TechMaven.TechMaven.entities.Board;
 import TechMaven.TechMaven.entities.Player;
 import TechMaven.TechMaven.entities.Rubic;
 
 import java.time.*;
-
-
 
 // ----------- << imports@AAAAAAFp/Kvq2XBejTo= >>
 // ----------- >>
@@ -23,118 +23,261 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAFp/Kvq2XBejTo= >>
 // ----------- >>
 public class PlayGameController {
-  // ----------- << method.annotations@AAAAAAFqEXYlzBfXDrg= >>
-  // ----------- >>
+	// ----------- << method.annotations@AAAAAAFqEXYlzBfXDrg= >>
+	// ----------- >>
 
-  private Board board;
-  private Player player1,player2;
-  private boolean currectPlayer = true;
+	private Board board;
+	private Player player1, player2;
+	private boolean currectPlayer = true;
 
-  public Boolean IsAvilableMove(int postions) {
-  // ----------- << method.body@AAAAAAFqEXYlzBfXDrg= >>   |
-  // ----------- >>
-	  Rubic [][] rubices =  board.GetRubices();
-	  for(int i = 0 ;  i < 3;i++)
-	  {
-		  for(int j = 0 ; j<3;j++)
-		  {
-			  if(postions == 0)
-			  {
-				  if(rubices[i][j].getMark() == ' ')
-				  {
-					  return true;
-				  }
-				  return false;
-			  }
-			 
-					  
-			postions--;
-		  }
-	  }
-	  
-	  return false;
-	  
-  }
-  // ----------- << method.annotations@AAAAAAFqX8As9hxl4EM= >>
-  // ----------- >>
-  public void CheckWin() {
-  // ----------- << method.body@AAAAAAFqX8As9hxl4EM= >>
-  // ----------- >>
-	  
-	 
+	public PlayGameController(Player player1, Player player2) {
+		this.player1 = player1;
+		this.player2 = player2;
+		this.board = new Board();
+	}
 
-	  
-  }
-  // ----------- << method.annotations@AAAAAAFqX8DLTBxxdcg= >>
-  // ----------- >>
-  public void AddMoveToBoard(int postions,char mark) {
-  // ----------- << method.body@AAAAAAFqX8DLTBxxdcg= >>
-  // ----------- >>
-	  
-	  for(int i = 0 ;  i < 3;i++)
-	  {
-		  for(int j = 0 ; j<3;j++)
-		  {
-			  if(postions == 0)
-			  {
-				  registersMove(i, j, mark);
+	public Boolean IsAvilableMove(int postions) {
+		// ----------- << method.body@AAAAAAFqEXYlzBfXDrg= >> |
+		// ----------- >>
+		Rubic[][] rubices = board.GetRubices();
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (postions == 0) {
+					if (rubices[i][j].getMark() == ' ') {
+						return true;
+					}
+					System.out.println("Unvalid location , try again");
+					return false;
+				}
 
-			  }
-			 
-					  
-			postions--;
-		  }
-	  }
-	  
-  }
-  public Boolean GetCurrectPlayer()
-  {
-    return this.currectPlayer;
-  }
-  // ----------- << method.annotations@AAAAAAFqEXy+QBhCKio= >>
-  // ----------- >>
-  public void registersMove(int row,int col,char mark) {
-  // ----------- << method.body@AAAAAAFqEXy+QBhCKio= >>
-  // ----------- >>
-      this.board.GetRubices()[row][col].setMark(mark);
-  }
-  
-  
-  // ----------- << method.annotations@AAAAAAFqEYHjVxiQ3rk= >>
-  // ----------- >>
-  public void SwapPlayers() {
-  // ----------- << method.body@AAAAAAFqEYHjVxiQ3rk= >>
-  // ----------- >>
-      this.currectPlayer = !this.currectPlayer;
-  }
+				postions--;
+			}
+		}
+
+		return false;
+
+	}
+
+	// ----------- << method.annotations@AAAAAAFqX8As9hxl4EM= >>
+	// ----------- >>
+	public int CheckWin() {
+		// ----------- << method.body@AAAAAAFqX8As9hxl4EM= >>
+		// ----------- >>
+
+		if (CheckWinByMark('o')) {
+
+			player1.setWins(player1.getWins() + 1);
+			return 1;
+		} else {
+			if (CheckWinByMark('x')) {
+
+				player2.setWins(player2.getWins() + 1);
+
+				return 2;
+
+			} else {
+				if (CheckIfDraw()) {
+
+					return 0;
+				} else {
+					return -1;
+				}
+			}
+		}
+
+	}
+
+	private boolean CheckIfDraw() {
+		// TODO Auto-generated method stub
+		int n = 3;
+		Rubic[][] rubices = board.GetRubices();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+
+				if (rubices[i][j].getMark() == ' ') {
+					return false;
+				}
+			}
+
+		}
+
+		return true;
+	}
+
+	private boolean CheckWinByMark(char c) {
+		// TODO Auto-generated method stub
+
+		int counterR = 0;
+		int counterC = 0;
+		int n = 3;
+		Rubic[][] rubices = board.GetRubices();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (rubices[i][j].getMark() == c) {
+					counterR++;
+				}
+				if (rubices[j][i].getMark() == c) {
+					counterC++;
+				}
+
+				if (counterC == 3 || counterR == 3) {
+					return true;
+				}
+			}
+			counterC = 0;
+			counterR = 0;
+
+		}
+
+		// check align
+		int counterAlignR = 0;
+		int counterAlignL = 0;
+
+		for (int i = 0; i < n; i++) {
+			if (rubices[i][i].getMark() == c)
+				counterAlignR++;
+			if (rubices[n - i-1][n - i-1].getMark() == c)
+				counterAlignL++;
+
+			if (counterAlignR == 3 || counterAlignL == 3) {
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+
+// ----------- << method.annotations@AAAAAAFqX8DLTBxxdcg= >>
+	// ----------- >>
+	public void AddMoveToBoard(int postions, char mark) {
+		// ----------- << method.body@AAAAAAFqX8DLTBxxdcg= >>
+		// ----------- >>
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (postions == 0) {
+					registersMove(i, j, mark);
+
+				}
+
+				postions--;
+			}
+		}
+
+	}
+
+	public Boolean GetCurrectPlayer() {
+		return this.currectPlayer;
+	}
+
+	// ----------- << method.annotations@AAAAAAFqEXy+QBhCKio= >>
+	// ----------- >>
+	public void registersMove(int row, int col, char mark) {
+		// ----------- << method.body@AAAAAAFqEXy+QBhCKio= >>
+		// ----------- >>
+		this.board.GetRubices()[row][col].setMark(mark);
+	}
+
+	// ----------- << method.annotations@AAAAAAFqEYHjVxiQ3rk= >>
+	// ----------- >>
+	public void SwapPlayers() {
+		// ----------- << method.body@AAAAAAFqEYHjVxiQ3rk= >>
+		// ----------- >>
+		this.currectPlayer = !this.currectPlayer;
+	}
 // ----------- << class.extras@AAAAAAFqEN9ZYRVzA5E= >>
 // ----------- >>
 
-public void RestartGame() {
-	// TODO Auto-generated method stub
-	Rubic [][] rubices =  board.GetRubices();
-	for(int i = 0 ; i<3;i++)
-    {
-      for(int j =0; j<3;j++)
-      {
-       
-    	  rubices[i][j].setMark(' ');
-        
-      }
-      
-    }
-	this.currectPlayer = true;
-	
-}
-  // ----------- << method.annotations@AAAAAAFqX8HF6hx4wg4= >>
-  // ----------- >>
- 
-  // ----------- << method.annotations@AAAAAAFqX8LzjhyoV7g= >>
-  // ----------- >>
-  public void ShowMessage() {
-  // ----------- << method.body@AAAAAAFqX8LzjhyoV7g= >>
-  // ----------- >>
-  }
-// ----------- << class.extras@AAAAAAFp/Kvq2XBejTo= >>
-// ----------- >>
+	public void RestartGame() {
+		// TODO Auto-generated method stub
+		Rubic[][] rubices = board.GetRubices();
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+
+				rubices[i][j].setMark(' ');
+
+			}
+
+		}
+		this.currectPlayer = true;
+
+	}
+	// ----------- << method.annotations@AAAAAAFqX8HF6hx4wg4= >>
+	// ----------- >>
+
+	// ----------- << method.annotations@AAAAAAFqX8LzjhyoV7g= >>
+	// ----------- >>
+
+	public void StartGame() {
+		int move = -1;
+		char mark = 'o';
+		int status = -1;
+		String result = StartGameButton.start();
+
+		if (result.equals("n"))
+			return;
+		
+		while (true) {
+			
+
+		
+			if (currectPlayer) {
+				mark = 'o';
+				System.out.println("player 1 - o turn");
+
+			} else {
+				mark = 'x';
+				System.out.println("player 2 - x  turn");
+
+			}
+
+		
+			do {
+				move = SelectMove.GetMove();
+				System.out.println("You Selected " + move);
+			} while (!IsAvilableMove(move));
+
+			AddMoveToBoard(move, mark);
+
+			board.printBoard();
+
+			status = CheckWin();
+
+			switch (status) {
+			case 1: // player 1 win
+
+				System.out.println("player 1 win ! ");
+				 result = StartGameButton.start();
+
+				if (result.equals("n"))
+					return;
+				
+				RestartGame();
+				break;
+			case 2: // player 2 win
+
+				System.out.println("player 2 win ! ");
+				 result = StartGameButton.start();
+					if (result.equals("n"))
+						return;
+				RestartGame();
+
+				break;
+			case 0: // draw
+
+				System.out.println("draw ! ");
+				RestartGame();
+				break;
+			case -1: // continue
+
+				SwapPlayers();
+
+				break;
+
+			}
+
+		}
+	}
+
 }

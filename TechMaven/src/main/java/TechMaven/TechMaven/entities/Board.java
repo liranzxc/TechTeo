@@ -35,7 +35,7 @@ public class Board {
       for(int j =0; j<3;j++)
       {
         rubices[i][j] = new Rubic(this);
-        
+        rubices[i][j].setMark(' ');
       }
     }
   }
@@ -50,7 +50,8 @@ public class Board {
 		        System.out.print(rubices[i][j]);
 		        
 		      }
-		      	System.out.println("-----------");
+		      	System.out.println();
+		      	System.out.println("-------------------");
 		    }
 		  
 	  }

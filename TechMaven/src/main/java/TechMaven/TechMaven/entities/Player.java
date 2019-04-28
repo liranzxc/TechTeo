@@ -26,13 +26,12 @@ public class Player {
   // ----------- >>
   private char mark;
   
-
-  // ----------- << method.annotations@AAAAAAFqEOYmmyOCXmM= >>
-  // ----------- >>
-  public void SetMove() {
-  // ----------- << method.body@AAAAAAFqEOYmmyOCXmM= >>
-  // ----------- >>
+  public Player(char mark)
+  {
+	  setMark(mark);
+	  setWins(0);
   }
+  
 // ----------- << class.extras@AAAAAAFqEL+umRp+/yI= >>
 // ----------- >>
 

@@ -20,11 +20,11 @@ import java.time.*;
 public class StartGameButton {
   // ----------- << method.annotations@AAAAAAFqX8O4Cxyy/8g= >>
   // ----------- >>
-  public String start() {
+  public static String start() {
   // ----------- << method.body@AAAAAAFqX8O4Cxyy/8g= >>
   // ----------- >>
 	  Scanner s = new Scanner(System.in);
-	  System.out.println("Do you eant start game ? y / n ");
+	  System.out.println("Do you want start game ? y / n ");
 	  String result = s.nextLine();
 	  
 	  return result;
