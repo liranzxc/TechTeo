@@ -11,7 +11,7 @@ import java.util.*;
 
 import TechMaven.TechMaven.entities.Board;
 import TechMaven.TechMaven.entities.Player;
-
+import TechMaven.TechMaven.entities.Rubic;
 
 import java.time.*;
 
@@ -28,10 +28,31 @@ public class PlayGameController {
 
   private Board board;
   private Player player1,player2;
-  
-  public void IsAvilableMove() {
-  // ----------- << method.body@AAAAAAFqEXYlzBfXDrg= >>
+  private boolean currectPlayer = true;
+
+  public Boolean IsAvilableMove(int postions) {
+  // ----------- << method.body@AAAAAAFqEXYlzBfXDrg= >>   |
   // ----------- >>
+	  Rubic [][] rubices =  board.GetRubices();
+	  for(int i = 0 ;  i < 3;i++)
+	  {
+		  for(int j = 0 ; j<3;j++)
+		  {
+			  if(postions == 0)
+			  {
+				  if(rubices[i][j].getMark() == ' ')
+				  {
+					  return true;
+				  }
+				  return false;
+			  }
+			 
+					  
+			postions--;
+		  }
+	  }
+	  
+	  return false;
 	  
   }
   // ----------- << method.annotations@AAAAAAFqX8As9hxl4EM= >>
@@ -39,19 +60,75 @@ public class PlayGameController {
   public void CheckWin() {
   // ----------- << method.body@AAAAAAFqX8As9hxl4EM= >>
   // ----------- >>
+	  
+	 
+
+	  
   }
   // ----------- << method.annotations@AAAAAAFqX8DLTBxxdcg= >>
   // ----------- >>
-  public void AddMoveToBoard() {
+  public void AddMoveToBoard(int postions,char mark) {
   // ----------- << method.body@AAAAAAFqX8DLTBxxdcg= >>
   // ----------- >>
+	  
+	  for(int i = 0 ;  i < 3;i++)
+	  {
+		  for(int j = 0 ; j<3;j++)
+		  {
+			  if(postions == 0)
+			  {
+				  registersMove(i, j, mark);
+
+			  }
+			 
+					  
+			postions--;
+		  }
+	  }
+	  
   }
+  public Boolean GetCurrectPlayer()
+  {
+    return this.currectPlayer;
+  }
+  // ----------- << method.annotations@AAAAAAFqEXy+QBhCKio= >>
+  // ----------- >>
+  public void registersMove(int row,int col,char mark) {
+  // ----------- << method.body@AAAAAAFqEXy+QBhCKio= >>
+  // ----------- >>
+      this.board.GetRubices()[row][col].setMark(mark);
+  }
+  
+  
+  // ----------- << method.annotations@AAAAAAFqEYHjVxiQ3rk= >>
+  // ----------- >>
+  public void SwapPlayers() {
+  // ----------- << method.body@AAAAAAFqEYHjVxiQ3rk= >>
+  // ----------- >>
+      this.currectPlayer = !this.currectPlayer;
+  }
+// ----------- << class.extras@AAAAAAFqEN9ZYRVzA5E= >>
+// ----------- >>
+
+public void RestartGame() {
+	// TODO Auto-generated method stub
+	Rubic [][] rubices =  board.GetRubices();
+	for(int i = 0 ; i<3;i++)
+    {
+      for(int j =0; j<3;j++)
+      {
+       
+    	  rubices[i][j].setMark(' ');
+        
+      }
+      
+    }
+	this.currectPlayer = true;
+	
+}
   // ----------- << method.annotations@AAAAAAFqX8HF6hx4wg4= >>
   // ----------- >>
-  public void RestartGame() {
-  // ----------- << method.body@AAAAAAFqX8HF6hx4wg4= >>
-  // ----------- >>
-  }
+ 
   // ----------- << method.annotations@AAAAAAFqX8LzjhyoV7g= >>
   // ----------- >>
   public void ShowMessage() {

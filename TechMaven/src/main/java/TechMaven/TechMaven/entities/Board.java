@@ -22,7 +22,6 @@ public class Board {
   // ----------- >>
   private Rubic [][] rubices = new Rubic[3][3];
   
-  private boolean currectPlayer = true;
 
   public Board(){
 
@@ -40,45 +39,25 @@ public class Board {
       }
     }
   }
+  public void printBoard() {
+	  // ----------- << method.body@AAAAAAFqX8HF6hx4wg4= >>
+	  // ----------- >>
+		  for(int i = 0 ; i<3;i++)
+		    {
+		      for(int j =0; j<3;j++)
+		      {
+		       
+		        System.out.print(rubices[i][j]);
+		        
+		      }
+		      	System.out.println("-----------");
+		    }
+		  
+	  }
 
   public Rubic[][] GetRubices()
   {
     return this.rubices;
   }
-  public Boolean GetCurrectPlayer()
-  {
-    return this.currectPlayer;
-  }
-  // ----------- << method.annotations@AAAAAAFqEXy+QBhCKio= >>
-  // ----------- >>
-  public void registersMove(int row,int col,char mark) {
-  // ----------- << method.body@AAAAAAFqEXy+QBhCKio= >>
-  // ----------- >>
-      this.rubices[row][col].setMark(mark);
-  }
-  // ----------- << method.annotations@AAAAAAFqEYHjVxiQ3rk= >>
-  // ----------- >>
-  public void SwapPlayers() {
-  // ----------- << method.body@AAAAAAFqEYHjVxiQ3rk= >>
-  // ----------- >>
-      this.currectPlayer = !this.currectPlayer;
-  }
-// ----------- << class.extras@AAAAAAFqEN9ZYRVzA5E= >>
-// ----------- >>
-
-public void printBoard() {
-	// TODO Auto-generated method stub
-		
-	for(int i = 0 ; i<3;i++)
-    {
-      for(int j =0; j<3;j++)
-      {
-       
-        System.out.print(rubices[i][j]);
-        
-      }
-      	System.out.println("-----------");
-    }
-	
-}
+  
 }
